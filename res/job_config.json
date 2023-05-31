@@ -1,0 +1,31 @@
+{
+  "job_id": "k8_container",
+  "description": "Anomality in container log count.",
+  "groups": [],
+  "analysis_config": {
+    "bucket_span": "30m",
+    "detectors": [
+      {
+        "function": "count",
+        "by_field_name": "container.image.name",
+        "partition_field_name": "container.id",
+        "exclude_frequent": "all"
+      }
+    ],
+    "influencers": [
+      "container.image.name",
+      "agent.id",
+      "host.geo.city_name"
+    ]
+  },
+  "data_description": {
+    "time_field": "@timestamp"
+  },
+  "analysis_limits": {
+    "model_memory_limit": "15MB"
+  },
+  "model_plot_config": {
+    "enabled": false,
+    "annotations_enabled": false
+  }
+}

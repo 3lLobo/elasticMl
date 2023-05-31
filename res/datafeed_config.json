@@ -1,0 +1,20 @@
+{
+  "datafeed_id": "datafeed-k8_container",
+  "job_id": "k8_container",
+  "indices": [
+    "logs-*"
+  ],
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match_all": {}
+        }
+      ]
+    }
+  },
+  "runtime_mappings": {},
+  "indices_options": {
+    "ignore_unavailable": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "datafeed_id": "datafeed-k8_multi",
+  "job_id": "k8_multi",
+  "indices": [
+    "logs-*"
+  ],
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match_all": {}
+        }
+      ]
+    }
+  },
+  "runtime_mappings": {}
+}
