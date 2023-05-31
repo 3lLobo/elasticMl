@@ -1,0 +1,24 @@
+{
+  "job_id": "k8_low_count",
+  "description": "",
+  "groups": [],
+  "analysis_config": {
+    "bucket_span": "15m",
+    "detectors": [
+      {
+        "function": "low_count"
+      }
+    ],
+    "influencers": []
+  },
+  "data_description": {
+    "time_field": "@timestamp"
+  },
+  "analysis_limits": {
+    "model_memory_limit": "11MB"
+  },
+  "model_plot_config": {
+    "enabled": true,
+    "annotations_enabled": false
+  }
+}

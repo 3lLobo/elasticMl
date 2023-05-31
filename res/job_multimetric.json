@@ -1,0 +1,40 @@
+{
+  "job_id": "k8_multi",
+  "description": "",
+  "groups": [],
+  "analysis_config": {
+    "bucket_span": "15m",
+    "detectors": [
+      {
+        "function": "low_count",
+        "partition_field_name": "kubernetes.namespace"
+      },
+      {
+        "function": "distinct_count",
+        "field_name": "container.image.name",
+        "partition_field_name": "kubernetes.namespace"
+      },
+      {
+        "function": "distinct_count",
+        "field_name": "host.ip",
+        "partition_field_name": "kubernetes.namespace"
+      }
+    ],
+    "influencers": [
+      "kubernetes.namespace"
+    ]
+  },
+  "data_description": {
+    "time_field": "@timestamp"
+  },
+  "custom_settings": {
+    "created_by": "multi-metric-wizard"
+  },
+  "analysis_limits": {
+    "model_memory_limit": "210MB"
+  },
+  "model_plot_config": {
+    "enabled": false,
+    "annotations_enabled": false
+  }
+}
