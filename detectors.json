@@ -1,0 +1,46 @@
+{
+  "detectors": [
+    {
+      "detector_description": "Counts the events.",
+      "function": "count"
+    },
+    {
+      "detector_description": "Detects low count of events.",
+      "function": "low_count"
+    },
+    {
+      "detector_description": "Detects high count of events.",
+      "function": "high_count"
+    },
+    {
+      "detector_description": "Starts a separate detector for every value in the by_filed_name. Should have the same field as influencer.",
+      "function": "count",
+      "by_field_name": "kubernetes.namespace"
+    },
+    {
+      "detector_description": "Count of distinct values in a field. Could be anomaly in user browsing behavior.",
+      "function": "distinct_count",
+      "field_name": "kubernetes.namespace"
+    },
+    {
+      "detector_description": "Population modeling, field is population. Same field should be used as influencer.",
+      "function": "count",
+      "over_field_name": "kubernetes.namespace"
+    },
+    {
+      "detector_description": "Mean of field. Field should ne numeric.",
+      "function": "mean",
+      "field_name": "event.severity"
+    },
+    {
+      "detector_description": "Variance of field. Excel function to detect anomalies in the variance of a column. Select influencer.",
+      "function": "varp",
+      "field_name": "duration"
+    },
+    {
+      "detector_description": "Rare values in field. Set field as influencer.",
+      "function": "rare",
+      "by_field_name": "container.image.name"
+    }
+  ]
+}

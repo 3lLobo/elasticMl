@@ -78,3 +78,17 @@ PUT _ml/anomaly_detectors/test-job2?pretty
   }
 }
 ```
+
+## Detectors
+
+Detector is the function to find anomalies. Using more than one detector results in a multi-metric job. 
+The basic functions such as `count` `high_count` `low_count` are based on the events field.
+Functions 
+
+Functions such as `mean` `sum` `median` `varp` require the filed to be numeric.
+
+`distinct_count` monitors the occurrence of unique values in a field.
+
+`rare` monitors the occurrence of rare values in a field.
+
+Examples of functions are [here](./detectors.json).
