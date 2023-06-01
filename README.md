@@ -21,7 +21,7 @@ Modify filed names in job and query and submit via api.
 
 
 Examples:
-- anormal network traffic
+- anomal network traffic
 - unusual ports
 
 
@@ -37,6 +37,7 @@ Examples:
 ```bash
 PUT _ml/anomaly_detectors/test-job2?pretty
 ```
+
 ```json
 {
   "analysis_config": {
