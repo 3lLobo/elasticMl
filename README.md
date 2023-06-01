@@ -1,5 +1,7 @@
 # ML usecases
 
+![image](https://github.com/3lLobo/elasticMl/assets/25290565/cfa1ab65-a7ab-4a29-a0c0-d189f0632d46)
+
 ## Anomaly detection
 
 ### Notes
@@ -79,3 +81,26 @@ PUT _ml/anomaly_detectors/test-job2?pretty
   }
 }
 ```
+
+
+## Detectors
+
+Detector is the function to find anomalies. Using more than one detector results in a multi-metric job. 
+The basic functions such as `count` `high_count` `low_count` are based on the events field.
+Functions 
+
+Functions such as `mean` `sum` `median` `varp` require the filed to be numeric.
+
+`distinct_count` monitors the occurrence of unique values in a field.
+
+`rare` monitors the occurrence of rare values in a field.
+
+Examples of functions are [here](./detectors.json).
+
+
+## Datafeed
+
+Datafeeds for jobs are determined by an existing datafeed plus a DSL query.
+DSL logic is doumented [here](https://www.elastic.co/guide/en/elasticsearch/reference/8.8/query-dsl.html).
+Examples for queries are [here](./dsl_queries.json).
+An easy way to get a working query is to use the discover tab in kibana and then use the `edit in dsl` option to get the query.
