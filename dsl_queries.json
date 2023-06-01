@@ -1,0 +1,19 @@
+{
+  "example_dsl_queries": [
+    {
+      "match_all": {}
+    },
+    {
+      "exists": {
+        "field": "tags"
+      }
+    },
+    {
+      "match": {
+        "message": {
+          "query": "this is a test"
+        }
+      }
+    }
+  ]
+}
