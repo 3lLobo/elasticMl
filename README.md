@@ -16,6 +16,7 @@
 ### Security jobs
 
 Predefined jobs for security use-cases.
+All use-cases are listed in the [docs](https://www.elastic.co/guide/en/security/8.8/prebuilt-ml-jobs.html).
 
 [Job](https://github.com/elastic/kibana/blob/8.8/x-pack/plugins/ml/server/models/data_recognizer/modules/security_linux/ml/v3_linux_anomalous_network_port_activity.json) and [detaview](https://github.com/elastic/kibana/blob/8.8/x-pack/plugins/ml/server/models/data_recognizer/modules/security_linux/ml/datafeed_v3_linux_anomalous_network_activity.json) JSONs are opensource.
 
@@ -52,7 +53,7 @@ PUT _ml/anomaly_detectors/test-job2?pretty
     ]
   },
   "data_description": {
-    "time_field": "timestamp",
+    "time_field": "@timestamp",
     "time_format": "epoch_ms"
   },
   "analysis_limits": {
@@ -104,3 +105,36 @@ Datafeeds for jobs are determined by an existing datafeed plus a DSL query.
 DSL logic is doumented [here](https://www.elastic.co/guide/en/elasticsearch/reference/8.8/query-dsl.html).
 Examples for queries are [here](./dsl_queries.json).
 An easy way to get a working query is to use the discover tab in kibana and then use the `edit in dsl` option to get the query.
+
+
+## Create Rules
+
+Based on the ml job, rules can be created to trigger alerts.
+Rules can be base on three types od results.
+
+### Bucket
+
+Bucket rules are based on the number of anomalies in a bucket.
+
+### Record
+
+Individual anomalies with in a time range.
+
+### Influencer
+
+The most unusual entities in a time range.
+
+
+## Out-of-memory heap-size
+
+Elastic ML jobs niet perfecr. Memory heap size blows up the heap size limit of 30GB.
+
+Can't det the ML features on in kubernetes cli
+
+### Solutions
+
+- augment heapsize
+- customise bucket span and/or more.
+- schedule at night
+- Use inidces with less data
+
