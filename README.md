@@ -124,3 +124,17 @@ Individual anomalies with in a time range.
 
 The most unusual entities in a time range.
 
+
+## Out-of-memory heap-size
+
+Elastic ML jobs niet perfecr. Memory heap size blows up the heap size limit of 30GB.
+
+Can't det the ML features on in kubernetes cli
+
+### Solutions
+
+- augment heapsize
+- customise bucket span and/or more.
+- schedule at night
+- Use inidces with less data
+
