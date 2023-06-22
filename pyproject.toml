@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "elastic-cloud"
+version = "0.1.0"
+description = ""
+authors = ["3lLobo <flocwolf@gmail.com>"]
+readme = "README.md"
+packages = [{include = "elastic_cloud"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^1.24.3"
+pandas = "^2.0.2"
+eland = "^8.7.0"
+python-dotenv = "^1.0.0"
+tqdm = "^4.65.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.23.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
