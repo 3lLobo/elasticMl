@@ -13,6 +13,11 @@ pandas = "^2.0.2"
 eland = "^8.7.0"
 python-dotenv = "^1.0.0"
 tqdm = "^4.65.0"
+transformers = "^4.30.2"
+langchain = "^0.0.210"
+tabulate = "^0.9.0"
+sentencepiece = "^0.1.99"
+protobuf = "==3.20.*"
 
 
 [tool.poetry.group.dev.dependencies]
