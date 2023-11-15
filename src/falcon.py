@@ -9,26 +9,50 @@ from langchain import PromptTemplate, LLMChain
 
 # Huggingface login
 from huggingface_hub.hf_api import HfFolder
+import os
 
-token = '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'
+token = os.environ.get("HUGGINGFACE_TOKEN", None)
 HfFolder.save_token(token)
 
 
-
 # Sample DataFrame
-df = pd.DataFrame({
-    "country": ["United States", "United Kingdom", "France", "Germany", "Italy", "Spain", "Canada", "Australia", "Japan", "China"],
-    "gdp": [19294482071552, 2891615567872, 2411255037952, 3435817336832, 1745433788416, 1181205135360, 1607402389504, 1490967855104, 4380756541440, 14631844184064],
-    "happiness_index": [6.94, 7.16, 6.66, 7.07, 6.38, 6.4, 7.23, 7.22, 5.87, 5.12]
-})
+df = pd.DataFrame(
+    {
+        "country": [
+            "United States",
+            "United Kingdom",
+            "France",
+            "Germany",
+            "Italy",
+            "Spain",
+            "Canada",
+            "Australia",
+            "Japan",
+            "China",
+        ],
+        "gdp": [
+            19294482071552,
+            2891615567872,
+            2411255037952,
+            3435817336832,
+            1745433788416,
+            1181205135360,
+            1607402389504,
+            1490967855104,
+            4380756541440,
+            14631844184064,
+        ],
+        "happiness_index": [6.94, 7.16, 6.66, 7.07, 6.38, 6.4, 7.23, 7.22, 5.87, 5.12],
+    }
+)
 
-# model_path = "tiiuae/falcon-7b"
-model_path = "bigcode/starcoder"
-tokenizer = AutoTokenizer.from_pretrained(model_path)
+model_path = "tiiuae/falcon-7b"
+# model_path = "bigcode/starcoder"
 #  GPT neo
+tokenizer = AutoTokenizer.from_pretrained(model_path)
 # model_path :  "EleutherAI/gpt-neo-2.7B"
 
-llm =  HuggingFacePipeline.from_model_id(
+llm = HuggingFacePipeline.from_model_id(
     # model_id="bigscience/bloom-1b7",
     model_id=model_path,
     task="text-generation",
@@ -53,7 +77,7 @@ llm =  HuggingFacePipeline.from_model_id(
         "top_k": 10,
         "num_return_sequences": 1,
         # "eos_token_id": tokenizer.eos_token_id,
-        },
+    },
     device=0,
 )
 
@@ -70,10 +94,7 @@ print(llm_chain.run(dish))
 
 
 agent = create_pandas_dataframe_agent(
-    llm,
-    df,
-    verbose=True,
-    agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION
+    llm, df, verbose=True, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION
 )
 
 agent.run("how many rows are there?")
